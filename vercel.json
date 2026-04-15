@@ -1,0 +1,28 @@
+{
+  "rewrites": [
+    {
+      "source": "/edu/assets/:path*",
+      "destination": "/assets/:path*"
+    },
+    {
+      "source": "/edu/favicon.svg",
+      "destination": "/favicon.svg"
+    },
+    {
+      "source": "/edu/icons.svg",
+      "destination": "/icons.svg"
+    },
+    {
+      "source": "/edu/mevi-logo.jpeg",
+      "destination": "/mevi-logo.jpeg"
+    },
+    {
+      "source": "/edu",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/edu/:path*",
+      "destination": "/index.html"
+    }
+  ]
+}
