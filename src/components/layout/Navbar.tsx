@@ -13,7 +13,11 @@ export function Navbar() {
       <div className="container mx-auto flex h-14 items-center justify-between">
         <div className="flex items-center gap-6">
           <Link href="/" className="flex items-center gap-2">
-            <img src="/mevi-logo.jpeg" alt="MEVI Logo" className="h-8 w-8 rounded object-contain" />
+            <img
+              src="/edu/mevi-logo.jpeg"
+              alt="MEVI Logo"
+              className="h-8 w-8 rounded object-contain"
+            />
             <span className="font-bold hidden sm:inline-block">
               MEVI Components
             </span>
@@ -25,7 +29,7 @@ export function Navbar() {
                 "transition-colors hover:text-foreground/80",
                 location.startsWith("/components")
                   ? "text-foreground"
-                  : "text-foreground/60"
+                  : "text-foreground/60",
               )}
             >
               Components
