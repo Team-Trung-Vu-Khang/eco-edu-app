@@ -319,8 +319,9 @@ export function SharedDemo() {
           Shared Components
         </h1>
         <p className="text-lg text-muted-foreground">
-          Các component tái sử dụng được xây dựng sẵn cho ứng dụng quản lý nông
-          trại — thống kê, bảng dữ liệu, hộp thoại và biểu mẫu nhiều bước.
+          Reusable components are built-in for the farm management
+          application—statistics, data tables, dialog boxes, and multi-step
+          forms.
         </p>
       </div>
 
@@ -329,8 +330,8 @@ export function SharedDemo() {
         <div className="border-b pb-2">
           <h2 className="text-2xl font-semibold tracking-tight">StatsCard</h2>
           <p className="text-muted-foreground text-sm mt-1">
-            Hiển thị một chỉ số quan trọng kèm icon, giá trị và chỉ số thay đổi
-            (tăng / giảm / trung tính).
+            Display a key indicator along with an icon, value, and indicator
+            change (increase/decrease/neutral).
           </p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -358,8 +359,9 @@ import { Sprout } from "lucide-react";
         <div className="border-b pb-2">
           <h2 className="text-2xl font-semibold tracking-tight">DataTable</h2>
           <p className="text-muted-foreground text-sm mt-1">
-            Bảng dữ liệu đầy đủ tính năng: tìm kiếm, lọc theo cột, phân trang,
-            chọn nhiều hàng, ẩn/hiện cột, và menu thao tác (xem, sửa, xóa).
+            The data table is fully featured: search, column filtering,
+            pagination, multiple row selection, column hiding/showing, and
+            action menus (view, edit, delete).
           </p>
         </div>
         <div>
@@ -405,117 +407,137 @@ const columns = [
         <div className="border-b pb-2">
           <h2 className="text-2xl font-semibold tracking-tight">FormDialog</h2>
           <p className="text-muted-foreground text-sm mt-1">
-            Hộp thoại có sẵn header, footer với nút Hủy / Lưu, hỗ trợ trạng thái
-            loading và 4 kích thước (sm, md, lg, xl).
+            The dialog box includes a header, footer with a Cancel/Save button,
+            supports a loading state, and has 4 sizes (sm, md, lg, xl).
           </p>
         </div>
         <div className="p-6 border rounded-lg bg-card flex flex-col items-start gap-4">
           <Button onClick={() => setFormOpen(true)}>
             <Sprout className="w-4 h-4 mr-2" />
-            Thêm mùa vụ mới
+            Adding a new season
           </Button>
           <p className="text-sm text-muted-foreground">
-            Nhấn nút trên để mở FormDialog.
+            Press the button above to open the FormDialog.
           </p>
         </div>
         <FormDialog
           open={formOpen}
           onOpenChange={setFormOpen}
-          title="Thêm mùa vụ mới"
-          description="Điền thông tin mùa vụ muốn đăng ký vào cánh đồng."
+          title="Adding a new season"
+          description="Fill in the information for the crop you wish to register for in the field."
           onSubmit={handleFormSubmit}
-          submitLabel="Đăng ký mùa vụ"
+          submitLabel="Seasonal registration"
           loading={formLoading}
           size="lg"
         >
           <div className="space-y-4">
             <div className="space-y-2">
-              <Label>Loại cây trồng</Label>
+              <Label>Type of crop</Label>
               <Select>
                 <SelectTrigger>
                   <SelectValue placeholder="Chọn cây trồng" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="wheat">Lúa mì</SelectItem>
-                  <SelectItem value="rice">Lúa gạo</SelectItem>
-                  <SelectItem value="corn">Bắp ngô</SelectItem>
-                  <SelectItem value="soybean">Đậu nành</SelectItem>
-                  <SelectItem value="cotton">Bông vải</SelectItem>
+                  <SelectItem value="wheat">Wheat</SelectItem>
+
+                  <SelectItem value="rice">Rice</SelectItem>
+
+                  <SelectItem value="corn">Corn</SelectItem>
+
+                  <SelectItem value="soybean">Soybean</SelectItem>
+
+                  <SelectItem value="cotton">Cotton</SelectItem>
                 </SelectContent>
               </Select>
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label>Cánh đồng</Label>
+                <Label>Field</Label>
                 <Select>
                   <SelectTrigger>
-                    <SelectValue placeholder="Chọn cánh đồng" />
+                    <SelectValue placeholder="Select field" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="a1">Field A1 (12 ha)</SelectItem>
-                    <SelectItem value="b2">Field B2 (8 ha)</SelectItem>
-                    <SelectItem value="c1">Field C1 (25 ha)</SelectItem>
+                    <SelectItem value="a1">Field A1 (12 hectares)</SelectItem>
+                    <SelectItem value="b2">Field B2 (8 hectares)</SelectItem>
+                    <SelectItem value="c1">Field C1 (25 hectares)</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
               <div className="space-y-2">
-                <Label>Ngày gieo trồng</Label>
+                <Label>Planting Date</Label>
                 <Input type="date" />
               </div>
             </div>
             <div className="space-y-2">
-              <Label>Ghi chú</Label>
+              <Label>Notes</Label>
+
               <Textarea
-                placeholder="Ghi chú về điều kiện đất, phân bón..."
+                placeholder="Notes on soil conditions, fertilizers..."
                 rows={3}
               />
             </div>
           </div>
         </FormDialog>
+
         <CodeBlock
           code={`import { FormDialog } from "@/components/shared/FormDialog";
 
 <FormDialog
-  open={open}
-  onOpenChange={setOpen}
-  title="Thêm mùa vụ mới"
-  description="Điền thông tin mùa vụ."
-  onSubmit={handleSubmit}
-  submitLabel="Đăng ký mùa vụ"
-  loading={isLoading}
-  size="lg"
+
+open={open}
+
+onOpenChange={setOpen}
+
+title="Add new crop"
+
+description="Fill in crop information."
+
+onSubmit={handleSubmit}
+
+submitLabel="Season Registration"
+
+loading={isLoading}
+
+size="lg"
+
 >
-  {/* Form fields */}
+{/* Form fields */}
 </FormDialog>`}
         />
       </section>
 
-      {/* ── DeleteDialog ──────────────────────────────────────────────────── */}
+      {/* ── DeleteDialog ─────────────────────────────────────────────────────────────── */}
+
       <section id="deletedialog" className="space-y-4 scroll-mt-20">
         <div className="border-b pb-2">
           <h2 className="text-2xl font-semibold tracking-tight">
             DeleteDialog
           </h2>
+
           <p className="text-muted-foreground text-sm mt-1">
-            Hộp thoại xác nhận xóa dùng AlertDialog, có nút Hủy / Xóa và trạng
-            thái loading. Mặc định có tiêu đề và mô tả phù hợp cho hành động
-            xóa.
+            A delete confirmation dialog using AlertDialog, with a Cancel/Delete
+            button and a loading status. By default, it has a title and
+            description appropriate for the delete action.
           </p>
         </div>
+
         <div className="p-6 border rounded-lg bg-card flex flex-col items-start gap-4">
           <Button variant="destructive" onClick={() => setDeleteOpen(true)}>
             <AlertTriangle className="w-4 h-4 mr-2" />
-            Xóa mùa vụ
+            Delete crop
           </Button>
+
           <p className="text-sm text-muted-foreground">
-            Nhấn nút trên để xem hộp thoại xác nhận xóa.
+            Click the button above to see the delete confirmation dialog.
           </p>
         </div>
+
         <DeleteDialog
           open={deleteOpen}
           onOpenChange={setDeleteOpen}
-          title="Xóa mùa vụ lúa mì?"
-          description="Mùa vụ tại Field A1 sẽ bị xóa vĩnh viễn. Dữ liệu thu hoạch và lịch sử sẽ không thể khôi phục."
+          title="Delete wheat crop?"
+          description="The crop at Field A1 will be permanently deleted. Harvest data and history cannot be recovered."
           onConfirm={handleDelete}
           loading={deleteLoading}
         />
@@ -523,39 +545,51 @@ const columns = [
           code={`import { DeleteDialog } from "@/components/shared/DeleteDialog";
 
 <DeleteDialog
-  open={open}
-  onOpenChange={setOpen}
-  title="Xóa mùa vụ lúa mì?"
-  description="Dữ liệu sẽ không thể khôi phục sau khi xóa."
-  onConfirm={handleConfirm}
-  loading={isLoading}
+
+open={open}
+
+onOpenChange={setOpen}
+
+title="Delete wheat crop?"
+
+description="Data cannot be recovered after deletion."
+
+onConfirm={handleConfirm} 
+loading={isLoading}
 />`}
         />
       </section>
 
-      {/* ── StepperForm ───────────────────────────────────────────────────── */}
+      {/* ── StepperForm ────────────────────────── ─────────────────────────── */}
       <section id="stepperform" className="space-y-4 scroll-mt-20">
         <div className="border-b pb-2">
           <h2 className="text-2xl font-semibold tracking-tight">StepperForm</h2>
+
           <p className="text-muted-foreground text-sm mt-1">
-            Biểu mẫu nhiều bước với thanh tiến trình, nút Tiếp theo / Quay lại
-            và trạng thái Hoàn thành. Mỗi bước nhận một React node làm nội dung.
+            Multi-step form with progress bar, Next/Back button and Completed
+            status. Each step receives a React node as content.
           </p>
         </div>
+
         <div className="border rounded-lg p-6 bg-card">
           {stepperDone ? (
             <div className="flex flex-col items-center gap-4 py-8 text-center">
               <div className="w-16 h-16 rounded-full bg-green-100 dark:bg-green-950/40 flex items-center justify-center">
                 <CheckCircle2 className="w-8 h-8 text-green-600" />
               </div>
+
               <div>
-                <p className="text-xl font-semibold">Đăng ký thành công!</p>
+                <p className="text-xl font-semibold">
+                  Registration successful!
+                </p>
+
                 <p className="text-muted-foreground text-sm mt-1">
-                  Mùa vụ đã được thêm vào hệ thống.
+                  The season has been added to the system.
                 </p>
               </div>
+
               <Button variant="outline" onClick={() => setStepperDone(false)}>
-                Đăng ký mùa vụ khác
+                Register another season
               </Button>
             </div>
           ) : (
@@ -563,24 +597,32 @@ const columns = [
               steps={steps}
               onComplete={() => setStepperDone(true)}
               onCancel={() => setStepperDone(false)}
-              completeLabel="Hoàn thành đăng ký"
+              completeLabel="Registration Completed"
             />
           )}
         </div>
+
         <CodeBlock
           code={`import { StepperForm, Step } from "@/components/shared/StepperForm";
 
 const steps: Step[] = [
-  { id: "basic", title: "Thông tin cơ bản", content: <Step1 /> },
-  { id: "crop", title: "Mùa vụ", content: <Step2 /> },
-  { id: "confirm", title: "Xác nhận", content: <Step3 /> },
+{ id: "basic", title: "Basic Information", content: <Step1 /> },
+
+{ id: "crop", title: "Season", content: <Step2 /> },
+
+{ id: "confirm", title: "Confirm", content: <Step3 /> },
+
 ];
 
 <StepperForm
-  steps={steps}
-  onComplete={handleComplete}
-  onCancel={handleCancel}
-  completeLabel="Hoàn thành đăng ký"
+
+steps={steps}
+
+onComplete={handleComplete}
+
+onCancel={handleCancel}
+completeLabel="Registration Completed"
+
 />`}
         />
       </section>
